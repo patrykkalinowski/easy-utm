@@ -9,98 +9,98 @@ var app = new Vue({
     socialButtons: [
       {
         icon: "fa-facebook-f",
-        name: "Facebook Post",
+        name: "Facebook",
         source: "facebook",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-linkedin",
-        name: "LinkedIn Post",
+        name: "LinkedIn",
         source: "linkedin",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-twitter",
-        name: "Twitter Post",
+        name: "Twitter",
         source: "twitter",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-instagram",
-        name: "Instagram Post",
+        name: "Instagram",
         source: "instagram",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-medium",
-        name: "Medium Post",
+        name: "Medium",
         source: "medium",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-quora",
-        name: "Quora Post",
+        name: "Quora",
         source: "quora",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-vk",
-        name: "VKontakte Post",
+        name: "VKontakte",
         source: "vkontakte",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-hacker-news",
-        name: "Hacker News Post",
+        name: "Hacker News",
         source: "hacker news",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-product-hunt",
-        name: "Product Hunt Post",
+        name: "Product Hunt",
         source: "product hunt",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-reddit-alien",
-        name: "Reddit Post",
+        name: "Reddit",
         source: "reddit",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-dribbble",
-        name: "Dribbble Post",
+        name: "Dribbble",
         source: "dribbble",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-behance",
-        name: "Behance Post",
+        name: "Behance",
         source: "behance",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-pinterest",
-        name: "Pinterest Post",
+        name: "Pinterest",
         source: "pinterest",
         medium: "social",
         selected: false
       },
       {
         icon: "fa-tumblr",
-        name: "Tumblr Post",
+        name: "Tumblr",
         source: "tumblr",
         medium: "social",
         selected: false
