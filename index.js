@@ -295,12 +295,14 @@ var app = new Vue({
   mounted: function () {
     var savedData = JSON.parse(localStorage.getItem("data"))
 
-    this.$data.socialButtons = savedData.socialButtons
-    this.$data.paidSocialButtons = savedData.paidSocialButtons
-    this.$data.paidSearchButtons = savedData.paidSearchButtons
-    this.$data.paidOtherButtons = savedData.paidOtherButtons
-    this.$data.ownMediaButtons = savedData.ownMediaButtons
-    this.$data.customButtons = savedData.customButtons
+    if (savedData) {
+      this.$data.socialButtons = savedData.socialButtons
+      this.$data.paidSocialButtons = savedData.paidSocialButtons
+      this.$data.paidSearchButtons = savedData.paidSearchButtons
+      this.$data.paidOtherButtons = savedData.paidOtherButtons
+      this.$data.ownMediaButtons = savedData.ownMediaButtons
+      this.$data.customButtons = savedData.customButtons
+    }
   },
   methods: {
     addCustom: function () {
