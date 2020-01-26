@@ -91,9 +91,11 @@ var app = new Vue({
         selected: true
       })
     },
-    removeCustom: function (index) {
-      console.log("remove custom")
+    removeCustom: function (custom) {
+      console.log("remove custom " + custom)
+      console.log(this.customButtons.indexOf(custom))
       // this.items.splice(index, 1);
+      Vue.delete(this.customButtons, this.customButtons.indexOf(custom))
     }
   }
 })
