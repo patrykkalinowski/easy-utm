@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Simple and Easy UTM Builder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <!-- development version, includes helpful console warnings -->
@@ -13,13 +13,133 @@
   <div id="app">
     <section class="section">
       <div class="container">
-        <h1 class="title">
-          Hello World
-        </h1>
-        <p class="subtitle">
-          My first website with <strong>Bulma</strong>!
-        </p>
-        <p>{{ message }}</p>
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-8 has-text-centered">
+            <h1 class="title">
+              Simple and Easy UTM Builder
+            </h1>
+            <p class="subtitle">
+              Quickly create multiple UTM tagged links for one URL
+            </p>
+          </div>
+          <div class="column"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+      <div class="columns">
+        <div class="column"></div>
+        <div class="column is-8">
+          <div class="field">
+            <label class="label">Website URL</label>
+            <div class="control">
+              <input class="input" type="url" placeholder="http..." v-model="websiteURL">
+            </div>
+          </div>
+
+          <label class="label">Where will you share this link?</label>
+
+          <p>Organic</p>
+          <div class="buttons">
+            <button class="button is-info" v-for="button of organicButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected">
+              <span class="icon">
+                <i class="fab" :class="button.icon"></i>
+              </span>
+              <p>{{ button.name }}</p>
+            </button>
+          </div>
+
+          <p>Paid</p>
+          <div class="buttons">
+            <button class="button is-primary" v-for="button of paidButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected">
+              <span class="icon">
+                <i class="fab" :class="button.icon"></i>
+              </span>
+              <p>{{ button.name }}</p>
+            </button>
+          </div>
+        </div>
+        <div class="column"></div>
+      </div>
+    </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-8">
+            <p>Optional UTM tags</p>
+            <div class="columns">
+              <div class="column">
+                <div class="field">
+                  <label class="label">UTM Campaign</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="http..." v-model="utm_campaign">
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                  <label class="label">UTM Content</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="http..." v-model="utm_content">
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                  <label class="label">UTM Term</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="http..." v-model="utm_term">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="column"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-8">
+            <div class="table-container">
+              <table class="table is-striped is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Tagged URL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="element in table">
+                    <td>{{ element.name }}</td>
+                    <td>{{ element.url }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="column"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-8">
+            <hr />
+            <p>Questions? Feature requests? Email me at <a href="mailto:patryk@patrykkalinowski.com">patryk@patrykkalinowski.com</a></p>
+
+          </div>
+          <div class="column"></div>
+        </div>
       </div>
     </section>
   </div>
