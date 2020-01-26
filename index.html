@@ -61,9 +61,29 @@
             </button>
           </div>
 
-          <p>Paid</p>
+          <p>Paid Search</p>
           <div class="buttons">
-            <button class="button is-primary" v-for="button of paidButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
+            <button class="button is-primary" v-for="button of paidSearchButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
+              <span class="icon">
+                <i class="fab" :class="button.icon"></i>
+              </span>
+              <p>{{ button.name }}</p>
+            </button>
+          </div>
+
+          <p>Paid Social <i>(only if you have Google Analytics <a href="https://www.annielytics.com/blog/analytics/track-social-ads-google-analytics/" target="_blank" rel="noopener">configured for it</a>)</i></p>
+          <div class="buttons">
+            <button class="button is-link" v-for="button of paidSocialButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
+              <span class="icon">
+                <i class="fab" :class="button.icon"></i>
+              </span>
+              <p>{{ button.name }}</p>
+            </button>
+          </div>
+
+          <p>Other Advertising <i>(default in Google Analytics)</i></p>
+          <div class="buttons">
+            <button class="button is-primary" v-for="button of paidOtherButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
               <span class="icon">
                 <i class="fab" :class="button.icon"></i>
               </span>

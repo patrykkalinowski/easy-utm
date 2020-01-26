@@ -143,47 +143,114 @@ var app = new Vue({
         selected: false
       },
     ],
-    paidButtons: [
+    paidSearchButtons: [
       {
         icon: "fa-google",
-        name: "Google Search Ad",
+        name: "Google",
         source: "google",
         medium: "ppc",
         selected: false
       },
       {
+        icon: "fa-microsoft",
+        name: "Bing",
+        source: "bing",
+        medium: "ppc",
+        selected: false
+      },
+      {
+        icon: "fa-yandex-international",
+        name: "Yandex",
+        source: "yandex",
+        medium: "ppc",
+        selected: false
+      },
+      {
+        icon: "fa fa-search",
+        name: "DuckDuckGo",
+        source: "duckduckgo",
+        medium: "ppc",
+        selected: false
+      },
+    ],
+    paidOtherButtons: [
+      {
         icon: "fa-facebook-f",
-        name: "Facebook Ad",
+        name: "Facebook",
         source: "facebook",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-linkedin",
-        name: "LinkedIn Ad",
+        name: "LinkedIn",
         source: "linkedin",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-twitter",
-        name: "Twitter Ad",
+        name: "Twitter",
         source: "twitter",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-instagram",
-        name: "Instagram Ad",
+        name: "Instagram",
         source: "instagram",
         medium: "cpa",
         selected: false
       },
       {
+        icon: "fa-youtube",
+        name: "Youtube",
+        source: "youtube",
+        medium: "cpa",
+        selected: false
+      },
+      {
         icon: "fa fa-tv",
-        name: "Online Banner Ad",
+        name: "Display Advertising",
         source: "banner",
         medium: "display",
+        selected: false
+      },
+    ],
+    paidSocialButtons: [
+      {
+        icon: "fa-facebook-f",
+        name: "Facebook",
+        source: "facebook",
+        medium: "paid social",
+        selected: false
+      },
+      {
+        icon: "fa-linkedin",
+        name: "LinkedIn",
+        source: "linkedin",
+        medium: "paid social",
+        selected: false
+      },
+      {
+        icon: "fa-twitter",
+        name: "Twitter",
+        source: "twitter",
+        medium: "paid social",
+        selected: false
+      },
+      {
+        icon: "fa-instagram",
+        name: "Instagram",
+        source: "instagram",
+        medium: "paid social",
+        selected: false
+      },
+      {
+        icon: "fa-youtube",
+        name: "Youtube",
+        source: "youtube",
+        medium: "paid social",
         selected: false
       },
     ],
@@ -193,7 +260,7 @@ var app = new Vue({
     table: function() {
       var arr = []
       
-      buttons = this.socialButtons.concat(this.paidButtons).concat(this.ownMediaButtons).concat(this.customButtons)
+      buttons = this.socialButtons.concat(this.paidSearchButtons).concat(this.paidSocialButtons).concat(this.paidOtherButtons).concat(this.ownMediaButtons).concat(this.customButtons)
 
       for (button in buttons) {
         var button = buttons[button]
@@ -230,18 +297,17 @@ var app = new Vue({
   watch: {
     table: function () {
       localStorage.setItem("data", JSON.stringify(this.$data))
-      // TODO: save configuration to localStorage
-      // TODO: restore configuration from localStorage on website load
     }
   },
   mounted: function () {
-    // var savedData = JSON.parse(localStorage.getItem("data"))
-    // console.log(this.$data)
-    // console.log(savedData)
+    var savedData = JSON.parse(localStorage.getItem("data"))
 
-    // this.$data.organicButtons = savedData.organicButtons
-    // this.$data.paidButtons = savedData.paidButtons
-    // this.$data.customButtons = savedData.customButtons
+    this.$data.socialButtons = savedData.socialButtons
+    this.$data.paidSocialButtons = savedData.paidSocialButtons
+    this.$data.paidSearchButtons = savedData.paidSearchButtons
+    this.$data.paidOtherButtons = savedData.paidOtherButtons
+    this.$data.ownMediaButtons = savedData.ownMediaButtons
+    this.$data.customButtons = savedData.customButtons
   },
   methods: {
     addCustom: function () {
