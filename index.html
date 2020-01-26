@@ -35,7 +35,7 @@
           <div class="field">
             <label class="label">Website URL</label>
             <div class="control">
-              <input class="input" type="url" placeholder="http..." v-model="websiteURL">
+              <input class="input" type="url" placeholder="http://..." v-model="websiteURL">
             </div>
           </div>
 
@@ -60,6 +60,38 @@
               <p>{{ button.name }}</p>
             </button>
           </div>
+
+          <p>Custom</p>
+
+          <div class="columns" v-for="custom of customButtons">
+            <div class="column">
+              <div class="field">
+                <label class="label">UTM Source</label>
+                <div class="control">
+                  <input class="input" type="text" v-model="custom.source">
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">UTM Medium</label>
+                <div class="control">
+                  <input class="input" type="text" v-model="custom.medium">
+                </div>
+              </div>
+            </div>
+            <div class="column is-narrow">
+              <div class="field">
+                <label class="label">&nbsp;</label>
+                <div class="control">
+                  <button class="button is-danger is-outlined" @click="removeCustom">-</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="button" @click="addCustom">Add custom source/medium</button>
+
         </div>
         <div class="column"></div>
       </div>
@@ -76,7 +108,7 @@
                 <div class="field">
                   <label class="label">UTM Campaign</label>
                   <div class="control">
-                    <input class="input" type="text" placeholder="http..." v-model="utm_campaign">
+                    <input class="input" type="text" v-model="utm_campaign">
                   </div>
                 </div>
               </div>
@@ -84,7 +116,7 @@
                 <div class="field">
                   <label class="label">UTM Content</label>
                   <div class="control">
-                    <input class="input" type="text" placeholder="http..." v-model="utm_content">
+                    <input class="input" type="text" v-model="utm_content">
                   </div>
                 </div>
               </div>
@@ -92,7 +124,7 @@
                 <div class="field">
                   <label class="label">UTM Term</label>
                   <div class="control">
-                    <input class="input" type="text" placeholder="http..." v-model="utm_term">
+                    <input class="input" type="text" v-model="utm_term">
                   </div>
                 </div>
               </div>
@@ -118,7 +150,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="element in table">
-                    <td>{{ element.name }}</td>
+                    <td>{{ element.medium || element.name || element.source }}</td>
                     <td>{{ element.url }}</td>
                   </tr>
                 </tbody>

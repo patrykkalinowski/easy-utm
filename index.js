@@ -36,19 +36,19 @@ var app = new Vue({
         medium: "ppc",
         selected: false
       }
-    ]
+    ],
+    customButtons: []
   },
   computed: {
     table: function() {
       var arr = []
       
-      buttons = this.organicButtons.concat(this.paidButtons)
-      console.log(buttons)
+      buttons = this.organicButtons.concat(this.paidButtons).concat(this.customButtons)
+
       for (button in buttons) {
         var button = buttons[button]
 
         if (button.selected) {
-          console.log("button selected")
           var url = this.websiteURL;
           url += `?utm_source=${button.source}&utm_medium=${button.medium}`
           if (this.utm_campaign) {
@@ -65,7 +65,7 @@ var app = new Vue({
           url = encodeURI(url)
 
           arr.push({
-            name: button.name,
+            name: button.name || ("Custom: " + button.source + "/" + button.medium),
             url: url 
           })
         }
@@ -74,9 +74,26 @@ var app = new Vue({
       return arr
     }
   },
+  watch: {
+    table: function () {
+      console.log("table has changed")
+      // TODO: save configuration to localStorage
+      // TODO: restore configuration from localStorage on website load
+    }
+  },
   methods: {
-    toggle: function () {
-      console.log("Toggled")
+    addCustom: function () {
+      console.log("custom")
+      this.customButtons.push({
+        name: null,
+        source: "",
+        medium: "",
+        selected: true
+      })
+    },
+    removeCustom: function (index) {
+      console.log("remove custom")
+      // this.items.splice(index, 1);
     }
   }
 })
