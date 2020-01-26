@@ -50,7 +50,9 @@ var app = new Vue({
 
         if (button.selected) {
           var url = this.websiteURL;
+          // always include source and medium
           url += `?utm_source=${button.source}&utm_medium=${button.medium}`
+          
           if (this.utm_campaign) {
             url += `&utm_campaign=${this.utm_campaign}`
           }
@@ -77,9 +79,20 @@ var app = new Vue({
   watch: {
     table: function () {
       console.log("table has changed")
+      console.log(this.$data)
+      localStorage.setItem("data", JSON.stringify(this.$data))
       // TODO: save configuration to localStorage
       // TODO: restore configuration from localStorage on website load
     }
+  },
+  mounted: function () {
+    var savedData = JSON.parse(localStorage.getItem("data"))
+    console.log(this.$data)
+    console.log(savedData)
+
+    this.$data.organicButtons = savedData.organicButtons
+    this.$data.paidButtons = savedData.paidButtons
+    this.$data.customButtons = savedData.customButtons
   },
   methods: {
     addCustom: function () {
@@ -94,8 +107,24 @@ var app = new Vue({
     removeCustom: function (custom) {
       console.log("remove custom " + custom)
       console.log(this.customButtons.indexOf(custom))
-      // this.items.splice(index, 1);
       Vue.delete(this.customButtons, this.customButtons.indexOf(custom))
+    },
+    downloadCSV: function () {
+      // https://stackoverflow.com/a/14966131
+      let csvContent = "data:text/csv;charset=utf-8,"
+      // add each row in table to CSV
+      this.table.forEach(function(row) {
+        let csvRow = `${row.name},${row.url}\r\n`
+        csvContent += csvRow ;
+      });
+
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "UTM.csv");
+      document.body.appendChild(link); // Required for FF
+
+      link.click(); // This will download the data file
     }
   }
 })
