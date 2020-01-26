@@ -36,6 +36,13 @@ var app = new Vue({
         selected: false
       },
       {
+        icon: "fa-youtube",
+        name: "Youtube",
+        source: "youtube",
+        medium: "social",
+        selected: false
+      },
+      {
         icon: "fa-medium",
         name: "Medium",
         source: "medium",
@@ -123,9 +130,9 @@ var app = new Vue({
       },
       {
         icon: "fa-dollar-sign",
-        name: "Affiliates",
+        name: "Affiliate",
         source: "",
-        medium: "affilliate",
+        medium: "affiliate",
         selected: false
       },
       {
