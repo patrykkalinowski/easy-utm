@@ -1,0 +1,11 @@
+{
+  "name": "easy-utm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:patrykkalinowski/easy-utm.git",
+  "author": "Patryk Kalinowski <patryk.kalinowski@posteo.net>",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
