@@ -29,22 +29,22 @@
       </div>
     </section>
     <section class="section">
-      <div class="container">
+      <div class="container content">
       <div class="columns">
         <div class="column"></div>
         <div class="column is-8">
           <div class="field">
-            <label class="label">Website URL</label>
+            <h2>Website URL</h2>
             <div class="control">
               <input class="input" type="url" placeholder="http://..." v-model="websiteURL">
             </div>
           </div>
 
-          <label class="label">Where will you share this link?</label>
+          <h2>Where will you share this link?</h2>
 
-          <p>Organic</p>
+          <p>Social</p>
           <div class="buttons">
-            <button class="button is-info" v-for="button of organicButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected">
+            <button class="button is-info" v-for="button of socialButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
               <span class="icon">
                 <i class="fab" :class="button.icon"></i>
               </span>
@@ -54,7 +54,7 @@
 
           <p>Paid</p>
           <div class="buttons">
-            <button class="button is-primary" v-for="button of paidButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected">
+            <button class="button is-primary" v-for="button of paidButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
               <span class="icon">
                 <i class="fab" :class="button.icon"></i>
               </span>
@@ -62,8 +62,17 @@
             </button>
           </div>
 
-          <p>Custom</p>
+          <p>Own media</p>
+          <div class="buttons">
+            <button class="button is-success" v-for="button of ownMediaButtons" v-bind:class="{ 'is-active': button.selected, 'is-outlined': !button.selected }" @click="button.selected = !button.selected" v-bind:title="button.source + ' / ' + button.medium">
+              <span class="icon">
+                <i class="fa" :class="button.icon"></i>
+              </span>
+              <p>{{ button.name }}</p>
+            </button>
+          </div>
 
+          <p>Custom</p>
           <div class="columns" v-for="custom of customButtons">
             <div class="column">
               <div class="field">
@@ -103,11 +112,11 @@
     </div>
     </section>
     <section class="section">
-      <div class="container">
+      <div class="container content">
         <div class="columns">
           <div class="column"></div>
           <div class="column is-8">
-            <p>Optional UTM tags</p>
+            <h3>Optional UTM tags</h3>
             <div class="columns">
               <div class="column">
                 <div class="field">
@@ -134,17 +143,22 @@
                 </div>
               </div>
             </div>
-
+            <h3>Advanced options</h3>
+            <label class="checkbox">
+              <input type="checkbox" v-model="caseSensitive">
+                Case sensitive
+            </label>
           </div>
           <div class="column"></div>
         </div>
       </div>
     </section>
     <section class="section">
-      <div class="container">
+      <div class="container content">
         <div class="columns">
           <div class="column"></div>
           <div class="column is-8">
+            <h2>Results</h2>
             <div class="table-container">
               <table class="table is-striped is-fullwidth">
                 <thead>

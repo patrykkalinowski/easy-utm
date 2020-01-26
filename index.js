@@ -1,41 +1,184 @@
 var app = new Vue({
   el: '#app',
   data: {
-    websiteURL: null,
+    websiteURL: "",
     utm_campaign: null,
     utm_content: null,
     utm_term: null,
-    organicButtons: [
+    caseSensitive: false,
+    socialButtons: [
       {
         icon: "fa-facebook-f",
         name: "Facebook Post",
         source: "facebook",
-        medium: "post",
+        medium: "social",
         selected: false
       },
       {
         icon: "fa-linkedin",
         name: "LinkedIn Post",
         source: "linkedin",
-        medium: "post",
+        medium: "social",
         selected: false
       },
       {
         icon: "fa-twitter",
         name: "Twitter Post",
         source: "twitter",
-        medium: "post",
+        medium: "social",
         selected: false
-      }
+      },
+      {
+        icon: "fa-instagram",
+        name: "Instagram Post",
+        source: "instagram",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-medium",
+        name: "Medium Post",
+        source: "medium",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-quora",
+        name: "Quora Post",
+        source: "quora",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-vk",
+        name: "VKontakte Post",
+        source: "vkontakte",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-hacker-news",
+        name: "Hacker News Post",
+        source: "hacker news",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-product-hunt",
+        name: "Product Hunt Post",
+        source: "product hunt",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-reddit-alien",
+        name: "Reddit Post",
+        source: "reddit",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-dribbble",
+        name: "Dribbble Post",
+        source: "dribbble",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-behance",
+        name: "Behance Post",
+        source: "behance",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-pinterest",
+        name: "Pinterest Post",
+        source: "pinterest",
+        medium: "social",
+        selected: false
+      },
+      {
+        icon: "fa-tumblr",
+        name: "Tumblr Post",
+        source: "tumblr",
+        medium: "social",
+        selected: false
+      },
+    ],
+    ownMediaButtons: [
+      {
+        icon: "fa-envelope",
+        name: "Newsletter",
+        source: "newsletter",
+        medium: "email",
+        selected: false
+      },
+      {
+        icon: "fa-at",
+        name: "Sales Email",
+        source: "sales email",
+        medium: "email",
+        selected: false
+      },
+      {
+        icon: "fa-dollar-sign",
+        name: "Affiliates",
+        source: "",
+        medium: "affilliate",
+        selected: false
+      },
+      {
+        icon: "fa-link",
+        name: "Referral",
+        source: "",
+        medium: "referral",
+        selected: false
+      },
     ],
     paidButtons: [
+      {
+        icon: "fa-google",
+        name: "Google Search Ad",
+        source: "google",
+        medium: "ppc",
+        selected: false
+      },
       {
         icon: "fa-facebook-f",
         name: "Facebook Ad",
         source: "facebook",
-        medium: "ppc",
+        medium: "cpa",
         selected: false
-      }
+      },
+      {
+        icon: "fa-linkedin",
+        name: "LinkedIn Ad",
+        source: "linkedin",
+        medium: "cpa",
+        selected: false
+      },
+      {
+        icon: "fa-twitter",
+        name: "Twitter Ad",
+        source: "twitter",
+        medium: "cpa",
+        selected: false
+      },
+      {
+        icon: "fa-instagram",
+        name: "Instagram Ad",
+        source: "instagram",
+        medium: "cpa",
+        selected: false
+      },
+      {
+        icon: "fa fa-tv",
+        name: "Online Banner Ad",
+        source: "banner",
+        medium: "display",
+        selected: false
+      },
     ],
     customButtons: []
   },
@@ -43,7 +186,7 @@ var app = new Vue({
     table: function() {
       var arr = []
       
-      buttons = this.organicButtons.concat(this.paidButtons).concat(this.customButtons)
+      buttons = this.socialButtons.concat(this.paidButtons).concat(this.ownMediaButtons).concat(this.customButtons)
 
       for (button in buttons) {
         var button = buttons[button]
@@ -52,7 +195,7 @@ var app = new Vue({
           var url = this.websiteURL;
           // always include source and medium
           url += `?utm_source=${button.source}&utm_medium=${button.medium}`
-          
+
           if (this.utm_campaign) {
             url += `&utm_campaign=${this.utm_campaign}`
           }
@@ -62,8 +205,9 @@ var app = new Vue({
           if (this.utm_term) {
             url += `&utm_term=${this.utm_term}`
           }
-
-          url = url.toLowerCase()
+          if (!this.caseSensitive) {
+            url = url.toLowerCase()
+          }
           url = encodeURI(url)
 
           arr.push({
@@ -78,25 +222,22 @@ var app = new Vue({
   },
   watch: {
     table: function () {
-      console.log("table has changed")
-      console.log(this.$data)
       localStorage.setItem("data", JSON.stringify(this.$data))
       // TODO: save configuration to localStorage
       // TODO: restore configuration from localStorage on website load
     }
   },
   mounted: function () {
-    var savedData = JSON.parse(localStorage.getItem("data"))
-    console.log(this.$data)
-    console.log(savedData)
+    // var savedData = JSON.parse(localStorage.getItem("data"))
+    // console.log(this.$data)
+    // console.log(savedData)
 
-    this.$data.organicButtons = savedData.organicButtons
-    this.$data.paidButtons = savedData.paidButtons
-    this.$data.customButtons = savedData.customButtons
+    // this.$data.organicButtons = savedData.organicButtons
+    // this.$data.paidButtons = savedData.paidButtons
+    // this.$data.customButtons = savedData.customButtons
   },
   methods: {
     addCustom: function () {
-      console.log("custom")
       this.customButtons.push({
         name: null,
         source: "",
@@ -105,8 +246,6 @@ var app = new Vue({
       })
     },
     removeCustom: function (custom) {
-      console.log("remove custom " + custom)
-      console.log(this.customButtons.indexOf(custom))
       Vue.delete(this.customButtons, this.customButtons.indexOf(custom))
     },
     downloadCSV: function () {
