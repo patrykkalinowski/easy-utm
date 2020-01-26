@@ -128,20 +128,6 @@ var app = new Vue({
         medium: "email",
         selected: false
       },
-      {
-        icon: "fa-dollar-sign",
-        name: "Affiliate",
-        source: "",
-        medium: "affiliate",
-        selected: false
-      },
-      {
-        icon: "fa-link",
-        name: "Referral",
-        source: "",
-        medium: "referral",
-        selected: false
-      },
     ],
     paidSearchButtons: [
       {
@@ -207,6 +193,13 @@ var app = new Vue({
         name: "Youtube",
         source: "youtube",
         medium: "cpa",
+        selected: false
+      },
+      {
+        icon: "fa-google",
+        name: "Google Display Network",
+        source: "google",
+        medium: "display",
         selected: false
       },
       {
