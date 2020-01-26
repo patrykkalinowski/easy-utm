@@ -162,35 +162,35 @@ var app = new Vue({
     paidOtherButtons: [
       {
         icon: "fa-facebook-f",
-        name: "Facebook",
+        name: "Facebook Ad",
         source: "facebook",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-linkedin",
-        name: "LinkedIn",
+        name: "LinkedIn Ad",
         source: "linkedin",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-twitter",
-        name: "Twitter",
+        name: "Twitter Ad",
         source: "twitter",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-instagram",
-        name: "Instagram",
+        name: "Instagram Ad",
         source: "instagram",
         medium: "cpa",
         selected: false
       },
       {
         icon: "fa-youtube",
-        name: "Youtube",
+        name: "Youtube Ad",
         source: "youtube",
         medium: "cpa",
         selected: false
@@ -213,35 +213,35 @@ var app = new Vue({
     paidSocialButtons: [
       {
         icon: "fa-facebook-f",
-        name: "Facebook",
+        name: "Facebook Paid",
         source: "facebook",
         medium: "paid social",
         selected: false
       },
       {
         icon: "fa-linkedin",
-        name: "LinkedIn",
+        name: "LinkedIn Paid",
         source: "linkedin",
         medium: "paid social",
         selected: false
       },
       {
         icon: "fa-twitter",
-        name: "Twitter",
+        name: "Twitter Paid",
         source: "twitter",
         medium: "paid social",
         selected: false
       },
       {
         icon: "fa-instagram",
-        name: "Instagram",
+        name: "Instagram Paid",
         source: "instagram",
         medium: "paid social",
         selected: false
       },
       {
         icon: "fa-youtube",
-        name: "Youtube",
+        name: "Youtube Paid",
         source: "youtube",
         medium: "paid social",
         selected: false
