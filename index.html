@@ -18,6 +18,16 @@
 
       gtag('config', 'UA-31184713-18');
     </script>
+
+    <style>
+      #clipboardTooltip {
+          position: fixed;
+          bottom: 50px;
+          right: 50px;
+          z-index: 100;
+          visibility: hidden;
+      }
+    </style>
   </head>
   <body>
   <div id="app">
@@ -193,18 +203,29 @@
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <th></th>
                     <th>Tagged URL</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="element in table">
                     <td>{{ element.name }}</td>
+                    <td>
+                      <span class="icon" @click="copyResult(element)" style="cursor: pointer;">
+                        <i class="far fa-copy"></i>
+                      </span>
+                    </td>
                     <td>{{ element.url }}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <button class="button" @click="downloadCSV">Download table as CSV</button>
+            <div id="clipboardTooltip">
+              <div class="notification is-success">
+                Copied to clipboard
+              </div>
+            </div>
           </div>
           <div class="column"></div>
         </div>

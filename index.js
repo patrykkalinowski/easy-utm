@@ -332,6 +332,30 @@ var app = new Vue({
       document.body.appendChild(link); // Required for FF
 
       link.click(); // This will download the data file
+    },
+    copyResult: function (element) {
+      // https://techoverflow.net/2018/03/30/copying-strings-to-the-clipboard-using-pure-javascript/
+      // Create new element
+      var el = document.createElement('textarea');
+      // Set value (string to be copied)
+      el.value = element.url;
+      // Set non-editable to avoid focus and move outside of view
+      el.setAttribute('readonly', '');
+      el.style = {position: 'absolute', left: '-9999px'};
+      document.body.appendChild(el);
+      // Select text inside element
+      el.select();
+      // Copy text to clipboard
+      document.execCommand('copy');
+      // Remove temporary element
+      document.body.removeChild(el);
+
+      // show notification for 2 seconds
+      notification = document.getElementById("clipboardTooltip")
+      notification.style.visibility = "visible"
+      setTimeout(function() {
+        notification.style.visibility = "hidden"
+      }, 2000)
     }
   }
 })
